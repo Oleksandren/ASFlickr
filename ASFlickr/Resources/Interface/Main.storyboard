@@ -34,9 +34,12 @@
                             <rect key="frame" x="69" y="7" width="462" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="First"/>
-                                <segment title="Second"/>
+                                <segment title="All"/>
+                                <segment title="On this iPhone"/>
                             </segments>
+                            <connections>
+                                <action selector="didChangeTab:" destination="2oI-J9-10d" eventType="valueChanged" id="2oS-Ve-4T0"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -47,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="772" y="450"/>
         </scene>
-        <!--View Controller-->
+        <!--DetailVC-->
         <scene sceneID="eLz-qH-RjL">
             <objects>
-                <viewController id="sEC-Z1-G8J" sceneMemberID="viewController">
+                <viewController id="sEC-Z1-G8J" customClass="DetailVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bra-Yr-TqH"/>
                         <viewControllerLayoutGuide type="bottom" id="iDv-Oy-QwE"/>
@@ -59,7 +62,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tmW-6x-QWG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tmW-6x-QWG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
@@ -71,6 +74,9 @@
                             <constraint firstItem="tmW-6x-QWG" firstAttribute="leading" secondItem="uHb-tw-CX9" secondAttribute="leading" id="wp3-bO-qCk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageViewMain" destination="tmW-6x-QWG" id="aDI-f4-s3C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6o-kl-gx2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@class UIImage;
 
 @interface OLNNetworkManager : NSObject
 + (instancetype) sharedManager;
 - (void)list:(void(^)(NSArray *list))completion;
+-(void)imageByURL:(NSURL *)url
+        cacheURL:(NSURL *)cachedURL
+       completion:(void(^)(BOOL success))completion;
 @end

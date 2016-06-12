@@ -7,6 +7,7 @@
 //
 
 #import "PhotoItem.h"
+#import "NSString+Utility.h"
 
 static NSString *const kTitle = @"Title";
 static NSString *const kLink = @"Link";
@@ -34,22 +35,57 @@ static NSString *const kLink = @"Link";
     [aCoder encodeObject:self.link forKey:kLink];
 }
 
-#pragma mark -
+#pragma mark - Lifecycle
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
     if (self) {
         _title = dictionary[@"title"];
-        _link = dictionary[@"link"];
+        _link = dictionary[@"media"][@"m"];
     }
     
     return self;
 }
 
+#pragma mark - Helpers
+
+- (void)clearCachedData
+{
+    NSError *error;
+    if (self.isCached) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.localPath error:&error];
+        if (error) {
+            NSLog(@"Error deleting the cached image: %@", error.localizedDescription);
+        }
+    }
+}
+
+#pragma mark - Convenience properties
+
 - (NSURL *)url
 {
     return [NSURL URLWithString:self.link];
+}
+
+- (NSURL *)cacheURL
+{
+    return [NSURL fileURLWithPath:self.localPath];
+}
+
+- (BOOL)isCached
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:self.localPath];
+}
+
+- (NSString *)localPath
+{
+    return [NSString documentsDirectoryWithLastPathComponent:[self imageName]];
+}
+
+- (NSString *)imageName
+{
+    return self.link.lastPathComponent;
 }
 
 @end

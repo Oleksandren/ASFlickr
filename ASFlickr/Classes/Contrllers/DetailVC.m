@@ -8,6 +8,7 @@
 
 #import "DetailVC.h"
 #import "PhotoItem.h"
+#import "OLNStorageManager.h"
 
 @interface DetailVC ()
 {
@@ -21,6 +22,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = self.photoItemSelected.title;
+    if (self.photoItemSelected.isCached) {
+        [self updateImage];
+    }
+    else {
+        [[OLNStorageManager sharedManager] cacheImageForPhotoItem:self.photoItemSelected
+                                                       completion:^(BOOL success) {
+                                                           [self updateImage];
+                                                       }];
+    }
+}
+
+- (void)updateImage
+{
+    NSData *data = [NSData dataWithContentsOfURL:self.photoItemSelected.cacheURL];
+    UIImage * img = [UIImage imageWithData:data];
+    imageViewMain.image = img;
 }
 
 @end

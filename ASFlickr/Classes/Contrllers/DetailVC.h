@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PhotoItem;
 
 @interface DetailVC : UIViewController
+@property (nonatomic, strong) PhotoItem *photoItemSelected;
 @end

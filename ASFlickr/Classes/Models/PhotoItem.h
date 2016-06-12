@@ -13,5 +13,8 @@
 @property (nonatomic, strong) NSString *link;
 @property (nonatomic, strong) NSString *localPath;
 @property (nonatomic, weak, readonly) NSURL *url;
+@property (nonatomic, weak, readonly) NSURL *cacheURL;
+@property (nonatomic, assign, readonly, getter=isCached) BOOL cached;
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

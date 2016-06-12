@@ -15,6 +15,7 @@
 @end
 
 @implementation OLNNetworkManager
+
 + (instancetype)sharedManager
 {
     static OLNNetworkManager *_sharedManager = nil;
@@ -28,7 +29,7 @@
 
 - (void)list:(void(^)(NSArray *list))completion
 {
-    NSURL *url = [NSURL URLWithString:@"http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1"];
+    NSURL *url = [NSURL URLWithString:@"http://flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1"];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
    
     [OLNNetworkActivityManager showHUD];
@@ -68,6 +69,40 @@
         
     }];
     [task resume];
+}
+
+-(void)imageByURL:(NSURL *)url cacheURL:(NSURL *)cacheURL completion:(void(^)(BOOL success))completion
+{
+    [OLNNetworkActivityManager showHUD];
+    NSURLSessionDownloadTask *downloadPhotoTask = [[NSURLSession sharedSession]
+                                                   downloadTaskWithURL:url completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+                                                       [OLNNetworkActivityManager hideHUD];
+                                                       if (error){
+                                                           [self showAlertWithError:error];
+                                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                                               completion(NO);
+                                                           });
+                                                       }
+                                                       else {
+                                                           NSError *err;
+                                                           [[NSFileManager defaultManager] copyItemAtURL:location
+                                                                                                   toURL:cacheURL
+                                                                                                   error:&err];
+                                                           if (err){
+                                                               [self showAlertWithError:error];
+                                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                                   completion(NO);
+                                                               });
+                                                           }
+                                                           else {
+                                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                                   completion(YES);
+                                                               });
+                                                           }
+                                                       }
+                                                   }];
+    
+    [downloadPhotoTask resume];
 }
 
 #pragma mark - Alert

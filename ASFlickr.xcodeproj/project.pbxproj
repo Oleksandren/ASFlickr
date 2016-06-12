@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D2B5A821D0C3C7100D668FE /* OLNStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2B5A811D0C3C7100D668FE /* OLNStorageManager.m */; };
+		1D2B5A861D0DAAA700D668FE /* NSString+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2B5A851D0DAAA700D668FE /* NSString+Utility.m */; };
 		1D2D525D1D0AC6A000264BDC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2D524F1D0AC6A000264BDC /* AppDelegate.m */; };
 		1D2D525E1D0AC6A000264BDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2D52541D0AC6A000264BDC /* main.m */; };
 		1D2D525F1D0AC6A000264BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D2D52561D0AC6A000264BDC /* Assets.xcassets */; };
@@ -21,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D2B5A801D0C3C7100D668FE /* OLNStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLNStorageManager.h; sourceTree = "<group>"; };
+		1D2B5A811D0C3C7100D668FE /* OLNStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLNStorageManager.m; sourceTree = "<group>"; };
+		1D2B5A841D0DAAA700D668FE /* NSString+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utility.h"; sourceTree = "<group>"; };
+		1D2B5A851D0DAAA700D668FE /* NSString+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utility.m"; sourceTree = "<group>"; };
 		1D2D52321D0AC65000264BDC /* ASFlickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASFlickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D2D524E1D0AC6A000264BDC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D2D524F1D0AC6A000264BDC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -112,6 +118,8 @@
 		1D2D52501D0AC6A000264BDC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1D2B5A841D0DAAA700D668FE /* NSString+Utility.h */,
+				1D2B5A851D0DAAA700D668FE /* NSString+Utility.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -130,6 +138,8 @@
 				1D2D52791D0B00CE00264BDC /* OLNNetworkActivityManager.m */,
 				1D2D52691D0ACB6F00264BDC /* OLNNetworkManager.h */,
 				1D2D526A1D0ACB6F00264BDC /* OLNNetworkManager.m */,
+				1D2B5A801D0C3C7100D668FE /* OLNStorageManager.h */,
+				1D2B5A811D0C3C7100D668FE /* OLNStorageManager.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -325,12 +335,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D2D526B1D0ACB6F00264BDC /* OLNNetworkManager.m in Sources */,
+				1D2B5A861D0DAAA700D668FE /* NSString+Utility.m in Sources */,
 				1D2D527A1D0B00CE00264BDC /* OLNNetworkActivityManager.m in Sources */,
 				1D2D525E1D0AC6A000264BDC /* main.m in Sources */,
 				1D2D527D1D0B064F00264BDC /* DetailVC.m in Sources */,
 				1D2D52681D0AC7FD00264BDC /* HomeListTVC.m in Sources */,
 				1D2D525D1D0AC6A000264BDC /* AppDelegate.m in Sources */,
 				1D2D52771D0AF67600264BDC /* PhotoItem.m in Sources */,
+				1D2B5A821D0C3C7100D668FE /* OLNStorageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
